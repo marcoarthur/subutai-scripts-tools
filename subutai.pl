@@ -99,7 +99,7 @@ sub auth {
     my $url = mount_url('login');
     my $tx = $ua->post( $url => form => { email => $email, password => $pwd } );
 
-    if ( $tx->success ) {
+    if ( $tx->res->is_success ) {
       SAVE: {
             store $ua->cookie_jar, $COOKIE;
         }
